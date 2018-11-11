@@ -1,0 +1,23 @@
+<mat-card class='signup'>
+  <h2 class="title"> Signup </h2>
+  <form  class='signupForm' [formGroup]="signupForm" (submit)="submit()" novalidate>
+      <mat-form-field>
+          <input type="text" id="first-name-input" matInput placeholder="Enter User Name" formControlName="name">
+          <mat-icon class='signupIcon' >supervised_user_circle</mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+          <input type="text" id="zotero-key-input" matInput placeholder="Enter Zotero  Collection Key" formControlName="zoteroAccount">
+          <mat-icon class='signupIcon' >vpn_key</mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="email" matInput placeholder="Enter Email" formControlName="email">
+        <mat-icon class='signupIcon' >email</mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" matInput tyo placeholder="Enter Password" formControlName="password">
+        <mat-icon class='signupIcon' >vpn_key</mat-icon>
+      </mat-form-field>
+      <button type="submit" color='default' [disabled]="!signupForm.valid">Signup</button>
+  </form>
+</mat-card>
+<small><a routerLink="/login">Already Have an Account?</a></small>

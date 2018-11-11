@@ -1,0 +1,23 @@
+.signupForm{
+    display:flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 10px auto;
+}
+
+
+.signupIcon {
+    float:right;
+}
+
+.signup{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title{
+    text-align: center;
+    float: top;
+}

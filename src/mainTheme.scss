@@ -1,0 +1,115 @@
+@import '~@angular/material/_theming.scss';
+
+@include mat-core();
+
+$mat-primary: (
+  50 : #e8ebf0,
+  100 : #c5ced9,
+  200 : #9eadc0,
+  300 : #778ca6,
+  400 : #5a7393,
+  500 : #3d5a80,
+  600 : #375278,
+  700 : #2f486d,
+  800 : #273f63,
+  900 : #1a2e50,
+  A100 : #8fb5ff,
+  A200 : #5c93ff,
+  A400 : #2972ff,
+  A700 : #0f61ff,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #ffffff,
+      A700 : #ffffff,
+  )
+);
+
+
+$mat-accent: (
+  50 : #eff3f5,
+  100 : #d8e0e6,
+  200 : #beccd5,
+  300 : #a3b8c4,
+  400 : #90a8b8,
+  500 : #7c99ab,
+  600 : #7491a4,
+  700 : #69869a,
+  800 : #5f7c91,
+  900 : #4c6b80,
+  A100 : #e0f2ff,
+  A200 : #addcff,
+  A400 : #7ac6ff,
+  A700 : #61bcff,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+
+
+
+$mat-warn:  (
+  50 : #f8eded,
+  100 : #eed3d1,
+  200 : #e3b6b3,
+  300 : #d79994,
+  400 : #cf837d,
+  500 : #c66d66,
+  600 : #c0655e,
+  700 : #b95a53,
+  800 : #b15049,
+  900 : #a43e38,
+  A100 : #fff1f1,
+  A200 : #ffc1be,
+  A400 : #ff918b,
+  A700 : #ff7971,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+
+$custom-theme-primary: mat-palette($mat-primary);
+$custom-theme-accent: mat-palette($mat-accent);
+$custom-theme-warn: mat-palette($mat-warn);
+
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+@include angular-material-theme($custom-theme);
