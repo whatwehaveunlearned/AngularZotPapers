@@ -1,0 +1,53 @@
+<div class="mat-elevation-z8 table">
+  <div class='title'>Authors In Session</div>  
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  
+  <div>
+    <table mat-table [dataSource]="dataSource" matSort onchange>
+
+      <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="affiliation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Affiliation </th>
+        <td mat-cell *matCellDef="let row"> {{row.affiliation}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="citations">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Citations </th>
+        <td mat-cell *matCellDef="let row"> {{row.citations}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="papers_in_collection">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Papers In Collection </th>
+          <td mat-cell *matCellDef="let row" > {{row.papers_in_collection}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div> 

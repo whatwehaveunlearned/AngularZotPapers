@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+// import {MatGridListModule} from '@angular/material/grid-list';
+import {NavbarComponent} from './pages/navbar/navbar.component'
 
 import {
   MatButtonModule,
@@ -30,12 +33,15 @@ import {
   MatTooltipModule,
   MatPaginatorModule,
 } from '@angular/material';
+
 import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
 
     // Material 
     MatButtonModule,
@@ -68,6 +74,9 @@ import { MatTableModule } from '@angular/material/table';
   exports :[
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    NavbarComponent,
+    FlexLayoutModule,
 
     // Material 
     MatButtonModule,
@@ -98,6 +107,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTooltipModule,
     MatTableModule,
   ],
-  declarations: []
+  declarations: [
+    NavbarComponent
+  ]
 })
 export class SharedModule { }

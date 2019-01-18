@@ -1,0 +1,10 @@
+<section id='container'>
+    <section  id='first_col'>
+        <app-collection_table id='collection_table'></app-collection_table>
+        <app-paper-table d='collection_papers_table'></app-paper-table>
+    </section>
+    <section id='second_col'>
+        <app-add-to-session-table id='import_to_session_table'></app-add-to-session-table>
+    </section>
+</section>
+<button (click) = "addToSess()" class= "addToSessButton" mat-raised-button>ADD TO SESSION</button>

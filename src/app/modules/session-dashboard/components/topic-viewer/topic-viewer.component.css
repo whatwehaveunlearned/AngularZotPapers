@@ -1,0 +1,16 @@
+#container{
+    width:100%;
+    /* display: flex;
+    flex-direction: row; */
+    overflow-x: overlay;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin-bottom:10px;
+    padding: 2px;
+}
+
+ul{
+    list-style: none;
+}

@@ -1,0 +1,22 @@
+<mat-card id="container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <mat-card class="card" fxFlex *ngFor = "let topic of topic_list">
+    <mat-card-header fxLayout="row">
+      <mat-card-title> {{ 'TOPIC ' + topic.order}}</mat-card-title>
+      <div fxLayoutAlign="right">
+        <button  mat-button >
+            <mat-icon>thumb_down</mat-icon>
+        </button>
+        <button  mat-button>
+            <mat-icon>thumb_up</mat-icon>
+        </button>
+      </div>
+    </mat-card-header>
+      <mat-card-content>
+      <ul>
+        <li *ngFor = "let word of topic.words">
+          {{word}}
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</mat-card>

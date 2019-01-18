@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<mat-card class='login'>
+  <form  class='loginForm' [formGroup]="loginForm" (submit)="submit()" novalidate>
+    <mat-form-field>
+      <input type="email" matInput placeholder="Enter Email" formControlName="email">
+      <mat-icon class='loginIcon' >email</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput tyo placeholder="Enter Password" formControlName="password">
+      <mat-icon class='loginIcon' >vpn_key</mat-icon>
+    </mat-form-field>
+    <button type="submit" color='default' [disabled]="!loginForm.valid">submit</button>
+</form>
+</mat-card>
+<small><a routerLink="/signup">Need an Account?</a></small>
