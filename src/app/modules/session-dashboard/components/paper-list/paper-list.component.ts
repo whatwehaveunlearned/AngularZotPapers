@@ -12,7 +12,7 @@ import { Paper_Item } from '@app/shared/classes/paper';
 })
 export class PaperListComponent implements OnInit {
   private data: Array<Paper_Item> = []
-  private displayedColumns: string[] = ['select','key','name', 'date', 'authors'];
+  private displayedColumns: string[] = ['name', 'date'];
   private dataSource: MatTableDataSource<Paper_Item>;
   private selection: SelectionModel<Paper_Item>;
 

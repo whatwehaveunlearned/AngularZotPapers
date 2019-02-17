@@ -1,7 +1,7 @@
-<mat-card id="container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-  <mat-card class="card" fxFlex *ngFor = "let topic of topic_list">
+<mat-card id="container" fxLayout="row"  fxLayoutGap="20px">
+  <mat-card id="{{'topicCard-' + topic.order}}" (click) = "mouseClick(topic,$event)" (mouseenter) = "mouseEnter(topic)" (mouseleave) = "mouseOut(topic)" class="card" fxFlex *ngFor = "let topic of topic_list">
     <mat-card-header fxLayout="row">
-      <mat-card-title> {{ 'TOPIC ' + topic.order}}</mat-card-title>
+      <!-- <mat-card-title> {{ 'TOPIC ' + topic.order}}</mat-card-title> -->
       <div fxLayoutAlign="right">
         <button  mat-button >
             <mat-icon>thumb_down</mat-icon>

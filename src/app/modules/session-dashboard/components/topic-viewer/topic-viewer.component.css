@@ -1,9 +1,11 @@
 #container{
-    width:100%;
+    /* width:600px; */
+    height: 1100px;
     /* display: flex;
     flex-direction: row; */
     overflow-x: overlay;
     flex-wrap: wrap;
+    margin:10px;
 }
 
 .card{

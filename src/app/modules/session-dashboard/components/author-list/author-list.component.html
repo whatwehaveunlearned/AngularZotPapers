@@ -1,13 +1,12 @@
-<div class="mat-elevation-z8 table">
-  <div class='title'>Authors In Session</div>  
+<mat-card class="table">
+  <!-- <div class='title'>Authors In Session</div>  
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
+  </mat-form-field> -->
   
-  <div>
     <table mat-table [dataSource]="dataSource" matSort onchange>
 
-      <ng-container matColumnDef="select">
+      <!-- <ng-container matColumnDef="select">
           <th mat-header-cell *matHeaderCellDef>
             <mat-checkbox (change)="$event ? masterToggle() : null"
                           [checked]="selection.hasValue() && isAllSelected()"
@@ -20,7 +19,7 @@
                           [checked]="selection.isSelected(row)">
             </mat-checkbox>
           </td>
-      </ng-container>
+      </ng-container> -->
   
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
@@ -48,6 +47,5 @@
       </tr>
     </table>
   
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
-</div> 
+    <mat-paginator [pageSizeOptions]="[5]"></mat-paginator>
+</mat-card>
