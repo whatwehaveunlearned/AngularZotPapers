@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Topic } from '@app/shared/classes/topic';
 import { CollectionsService } from '@app/shared/services/collections.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { Word } from '@app/shared/classes/word';
 
 import * as D3 from 'd3';
 
@@ -13,6 +15,7 @@ import * as D3 from 'd3';
 export class TopicViewerComponent implements OnInit {
   private topic_list: Array<Topic> = [];
   private selected: Array<number> = [];
+  private words: Array<Word> = []
 
   constructor(private collectionsService:CollectionsService) { }
 
@@ -23,6 +26,12 @@ export class TopicViewerComponent implements OnInit {
      this.collectionsService.topics_in_session_updated.subscribe(newData =>{
        this.topic_list = newData;
      })
+
+    //Subscribe
+    this.collectionsService.words_in_session_updated.subscribe(sessionWords =>{
+      this.words = sessionWords;
+    })
+
   }
 
   isTopicSelected(topicOrder){
@@ -47,7 +56,8 @@ export class TopicViewerComponent implements OnInit {
         }
         console.log(element);
         D3.select('#id_' + element)
-          .attr('r', (d) => 1)
+          .attr('r', (d) => 2)
+          .style('fill','#0f61ff')
       });
     }else{ //Select
       D3.select('#topicCard-'+ topic.order)
@@ -59,7 +69,8 @@ export class TopicViewerComponent implements OnInit {
         }
         console.log(element);
         D3.select('#id_' + element)
-          .attr('r', (d) => 5)
+          .attr('r', (d) => 4)
+          .style('fill','#ffc1be')
       });
     }   
  }
@@ -73,7 +84,8 @@ export class TopicViewerComponent implements OnInit {
         }
         console.log(element);
         D3.select('#id_' + element)
-          .attr('r', (d) => 5)
+          .attr('r', (d) => 4)
+          .style('fill','#ffc1be')
       });
     }
   }
@@ -87,9 +99,18 @@ export class TopicViewerComponent implements OnInit {
       }
       console.log(element);
       D3.select('#id_' + element)
-        .attr('r', (d) => 1)
+        .attr('r', (d) => 2)
+        .style('fill','#0f61ff')
     });
   }
  }
+
+ drop(event: CdkDragDrop<string[]>) {
+  moveItemInArray(this.topic_list, event.previousIndex, event.currentIndex);
+}
+
+thumbsDown(topic:any, event:Event){
+  this.topic_list = this.topic_list.filter(topics => topics.order!=topic.order)  
+}
 
 }

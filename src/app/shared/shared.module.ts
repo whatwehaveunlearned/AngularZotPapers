@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 // import {MatGridListModule} from '@angular/material/grid-list';
 import {NavbarComponent} from './pages/navbar/navbar.component'
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import {
   MatButtonModule,
@@ -70,6 +71,7 @@ import { MatTableModule } from '@angular/material/table';
     MatToolbarModule,
     MatTooltipModule,
     MatTableModule,
+    DragDropModule
   ],
   exports :[
     CommonModule,
@@ -106,6 +108,7 @@ import { MatTableModule } from '@angular/material/table';
     MatToolbarModule,
     MatTooltipModule,
     MatTableModule,
+    DragDropModule,
   ],
   declarations: [
     NavbarComponent

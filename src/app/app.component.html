@@ -1,10 +1,14 @@
 <app-navbar></app-navbar>
-<mat-toolbar>
+<mat-toolbar color="primary">
     <mat-toolbar-row>
         <span><h1>Zotero Explorer</h1></span>
        <span class="example-spacer"></span>
-        <a routerLink ="/zot_importer">Import</a>
-        <a routerLink ="/dashboard">Dashboard</a>
+       <ul fxLayout fxLayoutGap="10px" class="nav-items">
+        <li><a routerLink ="/signup">Signup</a></li>
+        <li><a routerLink ="/login">Login</a></li>
+        <li><a routerLink ="/zot_importer">Import</a></li>
+        <li><a routerLink ="/dashboard">Dashboard</a></li>
+        </ul>
     </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>

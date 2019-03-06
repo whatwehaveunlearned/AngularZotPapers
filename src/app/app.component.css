@@ -1,3 +1,23 @@
 .example-spacer {
     flex: 1 1 auto;
 }
+
+a:link{
+    text-decoration:none
+}
+
+a {
+    text-decoration: none;
+    color:white;
+}
+
+a:hover,
+a:active{
+    color:#d8e0e6;
+}
+
+.nav-items{
+    list-style: none;
+    padding:0;
+    margin:0
+}

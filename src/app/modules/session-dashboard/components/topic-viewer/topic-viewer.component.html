@@ -1,14 +1,15 @@
-<mat-card id="container" fxLayout="row"  fxLayoutGap="20px">
-  <mat-card id="{{'topicCard-' + topic.order}}" (click) = "mouseClick(topic,$event)" (mouseenter) = "mouseEnter(topic)" (mouseleave) = "mouseOut(topic)" class="card" fxFlex *ngFor = "let topic of topic_list">
+<div>
+<mat-card id="container" fxLayout="row"  fxLayoutGap="20px" cdkDropList class="list" (cdkDropListDropped)="drop($event)">
+  <mat-card id="{{'topicCard-' + topic.order}}" (dblclick) = "mouseClick(topic,$event)" (mouseenter) = "mouseEnter(topic)" (mouseleave) = "mouseOut(topic)" class="card" fxFlex *ngFor = "let topic of topic_list" cdkDrag>
     <mat-card-header fxLayout="row">
       <!-- <mat-card-title> {{ 'TOPIC ' + topic.order}}</mat-card-title> -->
       <div fxLayoutAlign="right">
-        <button  mat-button >
+        <button color="primary" mat-button (click) = "thumbsDown(topic,$event)">
             <mat-icon>thumb_down</mat-icon>
         </button>
-        <button  mat-button>
+        <!-- <button  mat-button>
             <mat-icon>thumb_up</mat-icon>
-        </button>
+        </button> -->
       </div>
     </mat-card-header>
       <mat-card-content>
@@ -20,3 +21,4 @@
     </mat-card-content>
   </mat-card>
 </mat-card>
+</div>

@@ -1,6 +1,9 @@
 .tooltip{
     display:flex;
     flex-direction: column;
+    margin: 5px;
+    width: 183px;
+    position: relative;
 }
 
 button{
@@ -12,4 +15,5 @@ button{
 mat-card{
     margin:10px;
     overflow: hidden;
+    height: 569px;
 }

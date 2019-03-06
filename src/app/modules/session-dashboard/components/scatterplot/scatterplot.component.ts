@@ -14,7 +14,7 @@ import * as D3Zoom from 'd3-zoom'
 })
 export class ScatterplotComponent implements OnInit {
   private data: Array<Word> = []
-  private margin:{top:number,right:number,bottom:number,left:number} = {top: 25, right: 25, bottom: 25, left: 25}
+  private margin:{top:number,right:number,bottom:number,left:number} = {top: 0, right: 0, bottom: 0, left: 0}
   
   private width: number;  
   private height: number;
@@ -38,7 +38,8 @@ export class ScatterplotComponent implements OnInit {
     //Subscribe
     this.collectionsService.words_in_session_updated.subscribe(newData =>{
       this.data = newData;
-      if(this.data.length > 100){ //I do this to optimize a bit Its tough to draw on load.
+      let count = 0
+      if(this.data.length > 200){ //I do this to optimize a bit Its tough to draw on load.
         this.setup();
         this.buildSVG();
         this.populate();
@@ -58,8 +59,9 @@ export class ScatterplotComponent implements OnInit {
   setup(){
     // this.width = document.querySelector('#word_scatterplot_card').clientWidth - this.margin.left - this.margin.right;
     // this.height = document.querySelector('#word_scatterplot_card').clientWidth - this.margin.bottom - this.margin.top;
-    this.width = document.body.clientWidth/6 * 3;
-    this.height = 900;
+    // this.width = document.body.clientWidth/6 * 3;
+    this.width = 600;
+    this.height = 569;
     this.xScale =  D3.scaleLinear().range([0, this.width]);
     this.yScale = D3.scaleLinear().range([this.height,0]);
     // this.zScale = D3.scaleLinear().range([2,15]);
@@ -70,10 +72,11 @@ export class ScatterplotComponent implements OnInit {
     D3.select('.tooltip').remove();
     let selector = D3.select('#word_scatterplot_card')
     this.svg = selector.append('svg')
-        .attr('viewBox', "0 0 " + this.width + " " + this.height)
-        .attr('width', this.width + this.margin.left + this.margin.right)
-        .attr('height',this.height + this.margin.top + this.margin.bottom)
+        .attr('viewBox', "0 0 " + 400 + " " + 400)
+        .attr('width', '95%')
+        .attr('height','95%')
         .attr('id','word_scatterplot_svg')
+        .attr('transform','translate(' + this.margin.left + ',' + this.margin.top + ')')
         .call(D3Zoom.zoom()
           .on("zoom",() => {
               this.axisZoom()
@@ -99,12 +102,12 @@ export class ScatterplotComponent implements OnInit {
   }
 
   drawXAxis() {
-    this.xAxis = D3.axisTop(this.xScale)
+    this.xAxis = D3.axisBottom(this.xScale)
         .ticks(10)
         .tickPadding(15);
     this.svg.append('g')
         .attr('class','x_axis')
-        .attr('transform','translate(0,' + (this.margin.top + 20) + ')')
+        .attr('transform','translate(0,' + (0) + ')')
         .call(this.xAxis)
         .append('text')
             .attr('class','lablel')
@@ -116,12 +119,12 @@ export class ScatterplotComponent implements OnInit {
 }
 
 drawYAxis() {
-    this.yAxis = D3.axisLeft(this.yScale)
+    this.yAxis = D3.axisRight(this.yScale)
         .ticks(10)
         .tickPadding(15);
     this.svg.append('g')
         .attr('class','y_axis')
-        .attr("transform", "translate(" + (this.margin.left) + "," + 0 + ")")
+        .attr("transform", "translate(" + (0) + "," + 0 + ")")
         .call(this.yAxis)
         .append('text')
             .attr('class','lablel')
@@ -176,13 +179,11 @@ getMinY() {
 populate(){
   //Create Tooltip
   let tooltip = D3.select('#word_scatterplot_card').append('div')
-      .attr('class','tooltip mat-card')
+      .attr('class','mat-card tooltip')
       .style('opacity',0.9)
-      .style('position','absolute')
-      .style('top',(this.height - this.margin.top - this.margin.bottom) + "px")
-      .style('left',(this.width - this.margin.left - 4 * this.margin.right) + "px")
       .style('display','flex')
       .style('flex-direction','column')
+      .style('top','-108px')
 
   let classRef = this;
   if (this.data){
@@ -198,11 +199,13 @@ populate(){
           .enter().append('circle')
               .attr('class','dot')
               .attr('id', (d) => 'id_' + d['word'])
-              .attr('r', (d) => 1)
+              .attr('r', (d) => 2)
               .attr('cx', (d) => classRef.xScale(d['x']))
               .attr('cy', (d) => classRef.yScale(d['y']))
-              .style('fill','blue')
-              .style('opacity',0.4)
+              .style('fill','#0f61ff')
+              .style('opacity',0.2)
+              .attr('stroke','#0f61ff')
+              .attr('stroke-width','1')
               .style('cursor','pointer')
               .on('mouseover', (d) => {
                   // D3.select(this).style('fill','orange') This does not work I dont know why TS is fucking with me
